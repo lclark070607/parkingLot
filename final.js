@@ -5,32 +5,31 @@ let car = [
         make: 'Jeep',
         model: 'Cherokee',
         size: 4,
-        cost: 30,
+        cost: 150,
     },
     {
         make: 'Volkswagon',
         model: 'Bug',
         size: 3,
-        cost: 15,
+        cost: 55,
     },
     {
         make: 'Vespa',
         model: 'Ecima',
         size: 2,
-        cost: 10,
+        cost: 75,
     },
     {
         make: 'Honda',
         model: 'Odyssey',
         size: 4,
-        cost: 20,
+        cost: 100,
     },
 ]
 
 window.addEventListener('load', function () {
     getLots();
     showVehicles();
-
 });
 
 //Post request
@@ -56,8 +55,8 @@ function updateCars(lotId, car) {
     request.addEventListener('load', function () {
         console.log('it is posted');
         getLots();
-        parent.innerHTML = '';
-        showLots();
+        // parent.innerHTML = '';
+        // showLots();
 
     });
     
@@ -79,6 +78,8 @@ function getLots() {
         //console.log(response);
 
         //Show each of the lots
+        let parent = document.querySelector('#vehicleLots');//deleting everything and then sends the new information back
+        parent.innerHTML = '';
         for (let i = 0; i < response.length; i++) {
             showLots(response[i]);
         }
@@ -92,20 +93,22 @@ function getLots() {
 //show lots
 function showLots(lots) {
     let parent = document.querySelector('#vehicleLots');
+    // parent.innerHTML = '';
     let eachlot = document.createElement('li');
+    // let vehicle = lots.vehicle
+    // vehicle = vehicle.make + vehicle.model
 
     // for (let i = 0; i < lots.length; i++) {
     eachlot.innerHTML = Mustache.render(
         document.querySelector('#lot-types').innerHTML,
-        { capacity: lots.capacity, id: lots.id, rate: lots.rate, vehicle: lots.vehicle.make}
+        { capacity: lots.capacity, id: lots.id, rate: lots.rate, vehicle: lots.vehicle[0].make + ' ' + lots.vehicle[0].model}
     );
-
+    //I need a for loop to allow for adding vehicles.  King helped me figure out how to show vehicle names versus [object]
+console.log(lots.vehicle[0].make)
     parent.appendChild(eachlot);
     console.log(eachlot);
 
-    // eachlot.innerHTML = '';
-    // getLots();
-    // showLots();
+
 }
 
 function showVehicles(cars) {
