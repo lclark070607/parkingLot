@@ -32,32 +32,14 @@ window.addEventListener('load', function () {
 
 });
 
-//Lot Buttons
-// let lot1Button = newCar.querySelector('#mucholots1');
-//         lot0Button.addEventListener('click', function () {
-//             // updateCars has two parameters
-//             updateCars(1, cars[i]);
-//         });
-
-// let lot2Button = newCar.querySelector('#mucholots2');
-//         lot1Button.addEventListener('click', function () {
-//             updateCars(2, cars[i]);
-//         });
-
-// let lot3Button = newCar.querySelector('#mucholots3');
-//         lot3Button.addEventListener('click', function (){
-//             updateCars(3, cars[i]);
-//         });
-// let lot4Button = newCar.querySelector('#mucholots4');
-//         lot4Button.addEventListener('click', function (){
-//             updateCars(4, cars[i]);
-//         });
-
 //Post request
 
 function updateCars(lotId, car) {
     //1. POST request to the server
     //2. send 'lotid', 'make', 'model', 'size', and 'rate' 
+    //3. this section of code came about from our gathering @Lexie's computer,
+    //reading the Mustache readme(Thanks Lexie) and a 3 hour study session with King
+    // & Lexie
     let newCarParked = {
         lotId: lotId,
         make: car.make,
@@ -68,7 +50,7 @@ function updateCars(lotId, car) {
     console.log(newCarParked)
 
     let request = new XMLHttpRequest();
-    request.open('POST', 'https://still-coast-76678.herokuapp.com/lots');
+    request.open('POST', 'http://localhost:4567/parkcar');
     // request.addEventListener('load', function () {
     // });
 
