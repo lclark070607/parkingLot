@@ -1,11 +1,14 @@
+body {
+  margin: 0; }
+
 header {
   text-align: center;
   font-family: 'Open Sans', sans-serif;
-  width: 100%;
   padding: 40px;
   background: linear-gradient(135deg, #708090 22px, #d9ecff 22px, #d9ecff 24px, transparent 24px, transparent 67px, #d9ecff 67px, #d9ecff 69px, transparent 69px), linear-gradient(225deg, #708090 22px, #d9ecff 22px, #d9ecff 24px, transparent 24px, transparent 67px, #d9ecff 67px, #d9ecff 69px, transparent 69px) 0 64px;
   background-color: #708090;
-  background-size: 64px 128px; }
+  background-size: 64px 128px;
+  max-width: 100%; }
 
 #head {
   border: 2px solid white; }
@@ -14,28 +17,50 @@ h1 {
   margin: 20px;
   font-size: 4em;
   text-shadow: 2px 2px black;
-  color: #ffffff; }
+  color: lightblue;
+  max-width: 100%; }
 
 h2 {
   font-size: 2em;
   text-shadow: 2px 2px black;
-  color: #ffffff; }
+  color: white; }
 
 #vehicleLots li {
-  display: flex;
-  justify-content: space-around;
+  display: inline-block;
+  text-align: center;
   border: solid 2px black;
-  padding: 20px;
+  padding: 10px 40px;
   background-color: lightgrey;
-  margin: 20px 150px;
+  margin: 45px;
   font-family: 'Open Sans', sans-serif; }
 
 #listCars li {
-  display: flex;
-  justify-content: space-around;
+  display: inline-block;
+  text-align: center;
   border: solid 2px black;
-  padding: 20px;
-  margin: 20px 150px;
-  font-family: 'Open Sans', sans-serif; }
+  padding: 20px 40px;
+  margin: 10px;
+  font-family: 'Open Sans', sans-serif;
+  background-color: lightgrey; }
+
+.fa {
+  color: lightsalmon; }
+
+button {
+  border-top: 1px solid #607da3;
+  background: #607da3;
+  background: -webkit-gradient(linear, left top, left bottom, from(#a7d2e8), to(#607da3));
+  background: -webkit-linear-gradient(top, #a7d2e8, #607da3);
+  background: -moz-linear-gradient(top, #a7d2e8, #607da3);
+  background: -ms-linear-gradient(top, #a7d2e8, #607da3);
+  background: -o-linear-gradient(top, #a7d2e8, #607da3);
+  padding: 13px 26px;
+  -webkit-border-radius: 8px;
+  -moz-border-radius: 8px;
+  border-radius: 8px;
+  -webkit-box-shadow: black 0 1px 0;
+  -moz-box-shadow: black 0 1px 0;
+  box-shadow: black 0 1px 0;
+  text-shadow: rgba(0, 0, 0, 0.4) 0 1px 0; }
 
 /*# sourceMappingURL=style.css.map */

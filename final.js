@@ -1,33 +1,34 @@
+// let parent = document.querySelector('#vehicleLots');
+
 let car = [
     {
-        'make': 'Jeep',
-        'model': 'Cherokee',
-        'size': 4,
-        'cost': 30,
+        make: 'Jeep',
+        model: 'Cherokee',
+        size: 4,
+        cost: 30,
     },
     {
-        'make': 'Volkswagon',
-        'model': 'Bug',
-        'size': 3,
-        'cost': 15,
+        make: 'Volkswagon',
+        model: 'Bug',
+        size: 3,
+        cost: 15,
     },
     {
-        'make': 'Vespa',
-        'model': 'Ecima',
-        'size': 2,
-        'cost': 10,
+        make: 'Vespa',
+        model: 'Ecima',
+        size: 2,
+        cost: 10,
     },
     {
-        'make': 'Honda',
-        'model': 'Odyssey',
-        'size': 4,
-        'cost': 20,
+        make: 'Honda',
+        model: 'Odyssey',
+        size: 4,
+        cost: 20,
     },
 ]
 
 window.addEventListener('load', function () {
     getLots();
-    
     showVehicles();
 
 });
@@ -45,14 +46,22 @@ function updateCars(lotId, car) {
         make: car.make,
         model: car.model,
         size: car.size,
-        rate: car.rate,
+        cost: car.cost,
     }
     console.log(newCarParked)
 
     let request = new XMLHttpRequest();
-    request.open('POST', 'http://localhost:4567/parkcar');
-    // request.addEventListener('load', function () {
-    // });
+    request.open('POST', 'https://still-coast-76678.herokuapp.com/parkCar');
+    
+    request.addEventListener('load', function () {
+        console.log('it is posted');
+        getLots();
+        parent.innerHTML = '';
+        showLots();
+
+    });
+    
+    
 
     //need to serialize the data I send over
     request.send(JSON.stringify(newCarParked));
@@ -73,7 +82,9 @@ function getLots() {
         for (let i = 0; i < response.length; i++) {
             showLots(response[i]);
         }
-
+        // eachlot.innerHTML = Mustache.render(
+        // document.querySelector('#lot-types').innerHTML,
+        // need a loop for the capacity refresh
     });
     request.send();
 }
@@ -86,18 +97,22 @@ function showLots(lots) {
     // for (let i = 0; i < lots.length; i++) {
     eachlot.innerHTML = Mustache.render(
         document.querySelector('#lot-types').innerHTML,
-        { capacity: lots.capacity, id: lots.id, rate: lots.rate }
+        { capacity: lots.capacity, id: lots.id, rate: lots.rate, vehicle: lots.vehicle.make}
     );
 
     parent.appendChild(eachlot);
     console.log(eachlot);
+
+    // eachlot.innerHTML = '';
+    // getLots();
+    // showLots();
 }
 
 function showVehicles(cars) {
 
     let parent2 = document.querySelector('#listCars');
 
-    for (let i = 1; i < car.length; i++) {
+    for (let i = 0; i < car.length; i++) {
         let carList = document.createElement('li');
         carList.innerHTML = Mustache.render(
             document.querySelector('#vehicle-types').innerHTML,
@@ -115,21 +130,21 @@ function showVehicles(cars) {
         let lot1Button = carList.querySelector('#lot-1');
         lot1Button.addEventListener('click', function () {
             // updateCars has two parameters
-            updateCars(1, cars[i]);
+            updateCars(1, car[i]);
         });
 
         let lot2Button = carList.querySelector('#lot-2');
         lot2Button.addEventListener('click', function () {
-            updateCars(2, cars[i]);
+            updateCars(2, car[i]);
         });
 
         let lot3Button = carList.querySelector('#lot-3');
         lot3Button.addEventListener('click', function (){
-            updateCars(3, cars[i]);
+            updateCars(3, car[i]);
         });
         let lot4Button = carList.querySelector('#lot-4');
         lot4Button.addEventListener('click', function (){
-            updateCars(4, cars[i]);
+            updateCars(4, car[i]);
         });
 
         parent2.appendChild(carList);
