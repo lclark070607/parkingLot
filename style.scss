@@ -1,5 +1,6 @@
 body {
     margin: 0;
+   
 }
 
 header {
@@ -20,8 +21,8 @@ max-width: 100%;
 h1 {
     margin: 20px;
     font-size: 4em;
-    text-shadow: 2px 2px black;
-    color: lightblue;
+    text-shadow: 2px 2px 3px black;
+    color: lightgrey;
     max-width: 100%;
 }
 
@@ -39,7 +40,7 @@ h2 {
     border: solid 2px black;
     padding: 10px 40px;
     background-color: lightgrey;
-    margin: 35px;
+    margin: 5px;
     font-family: 'Open Sans', sans-serif;
 }
 
@@ -51,7 +52,7 @@ h2 {
     text-align: center;
     border: solid 2px black;
     padding: 20px 40px;
-    margin: 10px;
+    margin: 30px;
     font-family: 'Open Sans', sans-serif;
     background-color: lightgrey;
 }
@@ -60,6 +61,7 @@ h2 {
     color: lightsalmon;
 }
 
+//grabbed this fun design from css tricks page.
 button {
    border-top: 1px solid #607da3;
    background: #607da3;
